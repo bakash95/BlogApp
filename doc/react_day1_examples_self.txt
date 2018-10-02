@@ -1,0 +1,72 @@
+//default paramaters
+const variable = (a, b = 5) => { console.log("hi hello world"); return a + b; }
+console.log(variable(10));
+
+//multiline strings
+const string = `hi
+hi`;
+console.log(string);
+
+//template literals
+const firstName = 'akash';
+const lastName = "";
+const details = `my name is ${firstName} ${lastName ? lastName : 'last name is not given'} and my age is ${10 + 5}`;
+console.log(details);
+
+//destructuring objects
+const employee = {
+    name: "akash",
+    id: "gbs05044",
+    age: 10,
+    number: 8056,
+    address: {
+        city: "chennai",
+        state: "TN"
+    }
+};
+const { name, id, ...age } = employee;
+console.log(name + ' ' + id + ' ' + age.address);
+
+const func = ({ name, id }) => { console.log(name + ' ' + id); };
+func(employee);
+
+//enhancing object literals
+Object.keys(employee).map((keys) => console.log(keys));
+console.log(Object.values(employee));
+
+const newEmployee = Object.assign({}, employee);
+newEmployee.address.city = 'texas';
+console.log(employee.address.city);
+
+//array functions
+const arrays = [0, 20, 30, 21];
+let filteredArray = arrays.filter(element => { if (element > 20) return element; });
+console.log(filteredArray);
+
+filteredArray = arrays.reduce((total, element) => { if (element > 20) { return total + element; } else { return total } }, 0);
+console.log(filteredArray);
+
+filteredArray = arrays.map((element) => { return element + 10; });
+console.log(filteredArray);
+
+filteredArray = arrays.find((element) => { return element > 10; });
+//returns when condition satisfied for eg returns the first value is greater than 10
+console.log(filteredArray);
+
+//fetch with promise
+fetch('http://jsonplaceholder.typicode.com/posts', {
+    method: "post", mode: "cors", body: JSON.stringify({
+        title: 'Harry Potter',
+        body: 'Fiction',
+        userId: 12
+    }), headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    }
+}).then((response) => {
+    console.log(response.status);
+    if (response.status !== response.ok) {
+        throw Error("Sorry ur wrong");
+    }
+    return response.json();
+}).then((data) => console.log(data)).catch(err => { console.log(err); });
+

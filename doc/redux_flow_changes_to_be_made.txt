@@ -1,0 +1,14 @@
+create a initial state
+for authors
+create a authors reducer
+connect the reducer to the root reducer
+define the action types
+write the functions in the action
+make changes in authors page(authors.js)
+make the changes to call api in app.js
+
+
+redux persist
+make changes to configure store
+make use of the persistedReducer in configure store
+in index.js file wrap the app component in persist gate

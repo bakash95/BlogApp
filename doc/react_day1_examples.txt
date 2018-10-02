@@ -1,0 +1,97 @@
+https://medium.com/javascript-scene/javascript-es6-var-let-or-const-ba58b8dcde75
+
+
+const sum = (a, b = 3) => {
+  
+  return a+b;
+}
+
+console.log(sum(3,2));
+
+console.log(sum(3));
+
+
+const myString = `This is a simple string
+this is second line
+`;
+
+const firstName = "Dani"
+const lastName = ""
+const age = 25;
+
+const nameText = "My name is " + firstName + lastName + ". My age is " + age; 
+
+const nameinES6 = `My name is ${firstName} ${lastName? lastName: ""}. My age is ${age}`;
+console.log(nameText);
+
+
+const student = {
+	firstName: "Arun",
+  lastName: "Lakshman",
+  class: "5",
+  section: "b",
+  score: 420,
+};
+/*
+const {firstName, lastName } = student;
+
+console.log(firstName);
+console.log(lastName);
+*/
+/*
+const functionWithObject = ({firstName, lastName}) => {
+	console.log(firstName);
+  console.log(lastName);
+}
+
+functionWithObject(student); 
+*/
+
+/* npm install -g yarn */
+
+const newProperties = {oldSchool: "KCS"}
+
+const newStudent = Object.assign({}, student, newProperties); //ES6
+const newStudent = {...student, ...newProperties};
+
+newStudent.firstName = "Raj";
+newStudent.lastName = "Kumar";
+
+console.log('new', newStudent);
+console.log('old', student);
+
+const marks = [
+	45,
+  50,
+  65,
+  73,
+  30,
+  10,
+  50,
+];
+
+const failed = marks.filter(mark => mark < 35);
+
+const sum = marks.reduce((total, mark) => {
+	return total + mark
+}, 0);
+
+const bonus = marks.map(mark => {
+  return mark + 10;
+});
+
+console.log(marks);
+//console.log(failed);
+//console.log(sum);
+console.log(bonus)
+
+fetch('https://jsonplaceholder.typicode.com/posts')
+.then(response => {
+    return response.json();
+})
+.then(data => {
+    console.log(data);
+})
+.catch(err => {
+    console.log(err);
+})
